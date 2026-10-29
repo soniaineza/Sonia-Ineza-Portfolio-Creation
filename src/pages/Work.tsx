@@ -8,7 +8,7 @@ import type { ProjectKind } from '../content/types'
 const kinds: ('All' | ProjectKind)[] = ['All', 'Client project', 'Personal build', 'Collaboration', 'Coursework']
 
 export function Work() {
-  useMeta('Work', 'Projects by Sonia Ineza: marketplaces, developer tools, dashboards and client systems, with honest status for each.')
+  useMeta('/work')
   const [kind, setKind] = useState<(typeof kinds)[number]>('All')
   const list = useMemo(() => publicProjects.filter((p) => kind === 'All' || p.kind === kind), [kind])
   const present = kinds.filter((k) => k === 'All' || publicProjects.some((p) => p.kind === k))

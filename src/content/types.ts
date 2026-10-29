@@ -46,7 +46,7 @@ export interface Project {
 export interface Role {
   org: string
   focus: string
-  kind: 'Employment' | 'Internship' | 'Freelance'
+  kind: 'Employment' | 'Internship' | 'Freelance' | 'Volunteer'
   summary?: string
   dates?: string
   visibility: 'public' | 'draft'
@@ -54,5 +54,5 @@ export interface Role {
 
 export interface SkillGroup {
   area: string
-  items: { name: string; usedIn?: string }[]
+  items: { name: string; usedIn?: string; level?: string }[]
 }

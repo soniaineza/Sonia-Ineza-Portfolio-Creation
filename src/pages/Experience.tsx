@@ -3,7 +3,7 @@ import { Eyebrow } from '../components/ui'
 import { useMeta } from '../components/useMeta'
 
 export function Experience() {
-  useMeta('Experience', 'Roles and education: full-stack and frontend development, an internship, freelance work and software engineering at AUCA.')
+  useMeta('/experience')
   const visible = roles.filter((r) => r.visibility === 'public')
   return (
     <div className="mx-auto max-w-page px-6 pt-16 md:pt-24">

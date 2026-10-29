@@ -3,11 +3,11 @@ import { Eyebrow } from '../components/ui'
 import { useMeta } from '../components/useMeta'
 
 export function Contact() {
-  useMeta('Contact', 'Contact Sonia Ineza about opportunities, collaborations, freelance work or a product idea.')
+  useMeta('/contact')
   const rows = [
     { label: 'Email', value: profile.email, href: `mailto:${profile.email}` },
     { label: 'GitHub', value: 'github.com/soniaineza', href: profile.github },
-    { label: 'LinkedIn', value: 'linkedin.com/in/soniaineza', href: profile.linkedin },
+    ...(profile.linkedin ? [{ label: 'LinkedIn', value: 'LinkedIn profile', href: profile.linkedin }] : []),
   ]
   return (
     <div className="mx-auto max-w-page px-6 pt-16 md:pt-24">

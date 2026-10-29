@@ -73,7 +73,9 @@ export function Layout() {
           <p className="flex gap-6">
             <a className="hover:text-clay" href={`mailto:${profile.email}`}>Email</a>
             <a className="hover:text-clay" href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a className="hover:text-clay" href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            {profile.linkedin && (
+              <a className="hover:text-clay" href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            )}
           </p>
         </div>
       </footer>

@@ -4,7 +4,7 @@ import { Eyebrow } from '../components/ui'
 import { useMeta } from '../components/useMeta'
 
 export function About() {
-  useMeta('About', 'About Sonia Ineza: a software engineering student at AUCA building products across web, mobile and AI tooling.')
+  useMeta('/about')
   return (
     <div className="mx-auto max-w-page px-6 pt-16 md:pt-24">
       <Eyebrow>About</Eyebrow>
@@ -39,6 +39,7 @@ export function About() {
               {g.items.map((i) => (
                 <li key={i.name} className="py-3">
                   <span className="font-medium">{i.name}</span>
+                  {i.level && <span className="ml-2 font-mono text-xs text-mute">{i.level}</span>}
                   {i.usedIn && <span className="block text-sm text-mute">Used in {i.usedIn}</span>}
                 </li>
               ))}

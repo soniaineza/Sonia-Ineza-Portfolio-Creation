@@ -13,7 +13,7 @@ const layouts = [
 ]
 
 export function Home() {
-  useMeta(null, 'Sonia Ineza is a software engineering student at AUCA in Kigali, building web, mobile and AI-enabled products.')
+  useMeta('/')
 
   return (
     <>
@@ -56,7 +56,8 @@ export function Home() {
         <div className="mt-14 space-y-28 md:space-y-36">
           {featuredProjects.map((p, i) => {
             const l = layouts[i % layouts.length]
-            const img = p.images![0]
+            const img = p.images?.[0]
+            if (!img) return null
             return (
               <Reveal key={p.id}>
                 <article className="grid items-end gap-8 md:grid-cols-12 md:gap-x-10">

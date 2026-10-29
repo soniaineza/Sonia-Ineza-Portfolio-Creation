@@ -26,10 +26,10 @@ const List = ({ items }: { items: string[] }) => (
 export function CaseStudy() {
   const { slug } = useParams()
   const p = slug ? getProject(slug) : undefined
-  useMeta(p ? p.title : 'Not found', p ? p.tagline : 'This project could not be found.')
+  useMeta(p ? `/work/${p.slug}` : '/404')
   if (!p) return <NotFound />
 
-  const related = (p.related ?? []).map(getProject).filter(Boolean)
+  const related = (p.related ?? []).flatMap((slug) => getProject(slug) ?? [])
 
   return (
     <article className="mx-auto max-w-page px-6 pt-12">
@@ -93,7 +93,7 @@ export function CaseStudy() {
           <h2 className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-mute">Related work</h2>
           <ul className="mt-4 flex flex-wrap gap-x-8 gap-y-2">
             {related.map((r) => (
-              <li key={r!.id}><Link to={`/work/${r!.slug}`} className="font-display text-xl font-normal hover:text-clay">{r!.title}</Link></li>
+              <li key={r.id}><Link to={`/work/${r.slug}`} className="font-display text-xl font-normal hover:text-clay">{r.title}</Link></li>
             ))}
           </ul>
         </section>
