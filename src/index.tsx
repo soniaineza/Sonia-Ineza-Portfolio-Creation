@@ -1,5 +1,5 @@
-import './index.css';
-import React from "react";
-import { render } from "react-dom";
-import { App } from "./App";
-render(<App />, document.getElementById("root"));
+import './index.css'
+import { createRoot } from 'react-dom/client'
+import { AppRouter } from './AppRouter'
+
+createRoot(document.getElementById('root')!).render(<AppRouter />)
