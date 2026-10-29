@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import type { ProjectStatus } from '../content/types'
 
-export function Reveal({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+export function Reveal({ children, className = '', delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null)
   useEffect(() => {
     const el = ref.current
@@ -23,7 +25,7 @@ export function Reveal({ children, className = '' }: { children: React.ReactNode
     return () => io.disconnect()
   }, [])
   return (
-    <div ref={ref} className={`reveal ${className}`}>
+    <div ref={ref} className={`reveal ${className}`} style={{ '--d': `${delay}ms` } as React.CSSProperties}>
       {children}
     </div>
   )
@@ -85,3 +87,40 @@ export function Frame({
     </figure>
   )
 }
+
+/** Numbered section label with a hairline above and an optional action on the right. */
+export const SectionLabel = ({
+  num,
+  title,
+  to,
+  action,
+}: {
+  num: string
+  title: string
+  to?: string
+  action?: string
+}) => (
+  <Reveal>
+    <div className="flex items-baseline justify-between border-t border-line pt-5">
+      <h2 className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-mute">
+        <span className="mr-3 text-clay">{num}</span>
+        {title}
+      </h2>
+      {to && action && (
+        <Link to={to} className="group inline-flex items-center gap-1.5 text-[0.8125rem] transition-colors hover:text-clay">
+          {action}
+          <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+        </Link>
+      )}
+    </div>
+  </Reveal>
+)
+
+/** Marks a link that leaves the site. */
+export const External = ({ children }: { children: React.ReactNode }) => (
+  <span className="inline-flex items-center gap-1">
+    {children}
+    <ArrowUpRight size={13} aria-hidden />
+    <span className="sr-only"> (opens in a new tab)</span>
+  </span>
+)

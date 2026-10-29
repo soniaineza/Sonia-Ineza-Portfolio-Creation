@@ -12,6 +12,8 @@ export interface ProjectImage {
   caption?: string
   /** CSS object-position for cropped previews, e.g. "left top" */
   position?: string
+  /** object-position when shown in a landscape card on the home page */
+  cardPosition?: string
 }
 
 export interface Project {

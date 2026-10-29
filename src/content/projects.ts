@@ -114,6 +114,7 @@ export const projects: Project[] = [
         alt: 'Duhahe admin console sign-in screen with the line “Run your market from anywhere.”',
         caption: 'Admin console, live deployment.',
         position: 'left top',
+        cardPosition: 'left 60%',
       },
     ],
     liveUrl: 'https://duhahe-admin.vercel.app',

@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { ArrowRight } from 'lucide-react'
 import { publicProjects } from '../content/projects'
 import { Eyebrow, Stack, StatusBadge } from '../components/ui'
 import { useMeta } from '../components/useMeta'
@@ -38,10 +39,13 @@ export function Work() {
           <li key={p.id} className="border-b border-line">
             <Link
               to={`/work/${p.slug}`}
-              className="grid gap-3 py-7 transition-colors hover:text-clay md:grid-cols-12 md:items-baseline md:gap-x-10"
+              className="group grid gap-3 py-7 transition-colors duration-300 hover:bg-card hover:text-clay focus-visible:bg-card md:grid-cols-12 md:items-baseline md:gap-x-10 md:px-3"
             >
               <div className="md:col-span-4">
-                <h2 className="font-display text-2xl font-normal">{p.title}</h2>
+                <h2 className="inline-flex items-center gap-2 font-display text-2xl font-normal">
+                  {p.title}
+                  <ArrowRight size={16} className="-translate-x-2 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100" aria-hidden />
+                </h2>
                 <p className="mt-1 font-mono text-xs text-mute">{p.category}</p>
               </div>
               <div className="md:col-span-5">
